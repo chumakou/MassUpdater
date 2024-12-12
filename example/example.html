@@ -1,0 +1,35 @@
+<!-- the script will be executed for each city in the list -->
+foreach city = New York,Washington,Los-Angeles,Paris,Milan,Rome
+
+<!-- country by default-->
+country = USA
+
+<!-- redefine country for some cities-->
+country.Paris = France
+country.Milan = France
+country.Rome = Italy
+
+<!-- for each city print to console generated html text -->
+print ============
+print <%city%>
+print ============
+print <%htmltext%>
+
+outputfile = ./index_<%city%>.html
+
+<!-- save html text to output file -->
+save <%htmltext%> to <%outputfile%>
+
+<!-- print diagnostic message -->
+print index file for city [<%city%>] was successfully saved to <%outputfile%>
+
+<!-- location includes city and country variables -->
+location = <%city%>, <%country%>
+
+<!-- htmltext is a multiline variable example: -->
+htmltext ={{
+<html>
+<title>Some information about <%location%></title>
+<body><%city%> is a beautiful city. <%city%> is located in the <%country%></body>
+</html>
+}}
